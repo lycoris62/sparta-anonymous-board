@@ -6,7 +6,7 @@ spring:
     url: jdbc:mysql://localhost:${DB_PORT}/${DB_DATABASE_NAME}
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     properties:
       hibernate:
         show_sql: true

@@ -6,7 +6,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
+import sparta.spartaboard.post.dto.PostDetailResponseDto;
 import sparta.spartaboard.post.dto.PostPreviewResponseDto;
+import sparta.spartaboard.post.entity.Post;
 import sparta.spartaboard.post.repository.PostRepository;
 
 @Service
@@ -21,5 +23,12 @@ public class PostService {
 			.stream()
 			.map(PostPreviewResponseDto::new)
 			.toList();
+	}
+
+	public PostDetailResponseDto getPost(Long id) {
+		Post post = postRepository.findById(id)
+			.orElseThrow(() -> new IllegalArgumentException("없는 게시글"));
+
+		return new PostDetailResponseDto(post);
 	}
 }

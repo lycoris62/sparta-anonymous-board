@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
+import sparta.spartaboard.post.dto.request.PostCreateRequestDto;
+import sparta.spartaboard.post.dto.response.PostCreateResponseDto;
 import sparta.spartaboard.post.dto.response.PostDetailResponseDto;
 import sparta.spartaboard.post.dto.response.PostPreviewResponseDto;
 import sparta.spartaboard.post.entity.Post;
@@ -30,5 +32,13 @@ public class PostService {
 			.orElseThrow(() -> new IllegalArgumentException("없는 게시글"));
 
 		return new PostDetailResponseDto(post);
+	}
+
+	@Transactional
+	public PostCreateResponseDto createPost(PostCreateRequestDto request) {
+		Post createdPost = Post.create(request);
+		Post savedPost = postRepository.save(createdPost);
+
+		return new PostCreateResponseDto(savedPost.getId());
 	}
 }

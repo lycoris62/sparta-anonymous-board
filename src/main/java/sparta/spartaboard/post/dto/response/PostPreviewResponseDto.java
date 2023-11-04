@@ -1,4 +1,4 @@
-package sparta.spartaboard.post.dto;
+package sparta.spartaboard.post.dto.response;
 
 import java.time.LocalDateTime;
 

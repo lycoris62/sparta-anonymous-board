@@ -6,8 +6,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
-import sparta.spartaboard.post.dto.PostDetailResponseDto;
-import sparta.spartaboard.post.dto.PostPreviewResponseDto;
+import sparta.spartaboard.post.dto.response.PostDetailResponseDto;
+import sparta.spartaboard.post.dto.response.PostPreviewResponseDto;
 import sparta.spartaboard.post.entity.Post;
 import sparta.spartaboard.post.repository.PostRepository;
 

@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
-import sparta.spartaboard.post.dto.PostDetailResponseDto;
-import sparta.spartaboard.post.dto.PostPreviewResponseDto;
+import sparta.spartaboard.post.dto.response.PostDetailResponseDto;
+import sparta.spartaboard.post.dto.response.PostPreviewResponseDto;
 import sparta.spartaboard.post.service.PostService;
 
 @RestController

@@ -3,10 +3,12 @@ package sparta.spartaboard.post.controller;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -43,5 +45,12 @@ public class PostController {
 		PostCreateResponseDto createPostDto = postService.createPost(request);
 
 		return ResponseEntity.ok(createPostDto);
+	}
+
+	@DeleteMapping("/posts/{postId}")
+	public ResponseEntity<?> deletePost(@PathVariable Long postId, @RequestHeader("password") String password) {
+		postService.delete(postId, password);
+
+		return ResponseEntity.noContent().build();
 	}
 }

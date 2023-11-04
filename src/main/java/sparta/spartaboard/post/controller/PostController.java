@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
 import sparta.spartaboard.post.dto.request.PostCreateRequestDto;
+import sparta.spartaboard.post.dto.request.PostEditRequestDto;
 import sparta.spartaboard.post.dto.response.PostCreateResponseDto;
 import sparta.spartaboard.post.dto.response.PostDetailResponseDto;
 import sparta.spartaboard.post.dto.response.PostPreviewResponseDto;
@@ -45,6 +47,17 @@ public class PostController {
 		PostCreateResponseDto createPostDto = postService.createPost(request);
 
 		return ResponseEntity.ok(createPostDto);
+	}
+
+	@PatchMapping("/posts/{postId}")
+	public ResponseEntity<PostDetailResponseDto> editPost(
+		@PathVariable Long postId,
+		@RequestBody PostEditRequestDto request,
+		@RequestHeader String password) {
+
+		PostDetailResponseDto editedPostDetail = postService.editPost(postId, request, password);
+
+		return ResponseEntity.ok(editedPostDetail);
 	}
 
 	@DeleteMapping("/posts/{postId}")

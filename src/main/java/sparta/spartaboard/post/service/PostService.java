@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
 import sparta.spartaboard.post.dto.request.PostCreateRequestDto;
+import sparta.spartaboard.post.dto.request.PostEditRequestDto;
 import sparta.spartaboard.post.dto.response.PostCreateResponseDto;
 import sparta.spartaboard.post.dto.response.PostDetailResponseDto;
 import sparta.spartaboard.post.dto.response.PostPreviewResponseDto;
@@ -43,7 +44,21 @@ public class PostService {
 	}
 
 	@Transactional
+	public PostDetailResponseDto editPost(Long postId, PostEditRequestDto request, String password) {
+		Post post = getValidatedPost(postId, password);
+		post.edit(request);
+
+		return new PostDetailResponseDto(post);
+	}
+
+	@Transactional
 	public void delete(Long postId, String password) {
+		Post post = getValidatedPost(postId, password);
+
+		postRepository.delete(post);
+	}
+
+	private Post getValidatedPost(Long postId, String password) {
 		Post post = postRepository.findById(postId)
 			.orElseThrow(() -> new IllegalArgumentException("없는 게시글"));
 
@@ -51,6 +66,6 @@ public class PostService {
 			throw new IllegalArgumentException("잘못된 비밀번호");
 		}
 
-		postRepository.delete(post);
+		return post;
 	}
 }

@@ -11,6 +11,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import sparta.spartaboard.model.BaseEntity;
 import sparta.spartaboard.post.dto.request.PostCreateRequestDto;
+import sparta.spartaboard.post.dto.request.PostEditRequestDto;
 
 /**
  * 게시글 엔티티.
@@ -46,5 +47,11 @@ public class Post extends BaseEntity {
 
 	public static Post create(PostCreateRequestDto request) {
 		return new Post(request.getTitle(), request.getAuthor(), request.getPassword(), request.getContents());
+	}
+
+	public void edit(PostEditRequestDto request) {
+		this.title = request.getTitle();
+		this.author = request.getAuthor();
+		this.contents = request.getContents();
 	}
 }

@@ -41,4 +41,16 @@ public class PostService {
 
 		return new PostCreateResponseDto(savedPost.getId());
 	}
+
+	@Transactional
+	public void delete(Long postId, String password) {
+		Post post = postRepository.findById(postId)
+			.orElseThrow(() -> new IllegalArgumentException("없는 게시글"));
+
+		if (!post.getPassword().equals(password)) {
+			throw new IllegalArgumentException("잘못된 비밀번호");
+		}
+
+		postRepository.delete(post);
+	}
 }

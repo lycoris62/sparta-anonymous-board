@@ -10,6 +10,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import sparta.spartaboard.model.BaseEntity;
+import sparta.spartaboard.post.dto.request.PostCreateRequestDto;
 
 /**
  * 게시글 엔티티.
@@ -35,4 +36,15 @@ public class Post extends BaseEntity {
 
 	@Column(nullable = false, columnDefinition = "text") // 글내용은 1이상 65,535 byte 이하
 	private String contents;
+
+	private Post(String title, String author, String password, String contents) {
+		this.title = title;
+		this.author = author;
+		this.password = password;
+		this.contents = contents;
+	}
+
+	public static Post create(PostCreateRequestDto request) {
+		return new Post(request.getTitle(), request.getAuthor(), request.getPassword(), request.getContents());
+	}
 }

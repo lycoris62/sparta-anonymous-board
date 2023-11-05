@@ -7,7 +7,11 @@
 ![스파르타_익명_게시판](https://github.com/lycoris62/sparta-anonymous-board/assets/55584664/897dbb47-8012-4014-8adc-edbea3f030d8)
 
 ## API 명세서
-<img width="470" alt="스크린샷 2023-11-04 오후 8 34 38" src="https://github.com/lycoris62/sparta-anonymous-board/assets/55584664/81bc72d5-39da-46cc-bc60-a7a02a2e328f">
+[POSTMAN 명세서](https://documenter.getpostman.com/view/16720681/2s9YXfa2v8)    
+
+<br />
+
+<img width="454" alt="스크린샷 2023-11-05 오후 5 43 25" src="https://github.com/lycoris62/sparta-anonymous-board/assets/55584664/7f0eb9a5-118d-4b59-8d02-3188881780dd">
 
 ## ERD
 ![SpartaBoard](https://github.com/lycoris62/sparta-anonymous-board/assets/55584664/3570f26e-68fd-413e-8068-58b38b38a282)

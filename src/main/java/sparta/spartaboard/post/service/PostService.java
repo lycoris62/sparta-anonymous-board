@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
+import sparta.spartaboard.global.error.exception.InvalidPasswordException;
+import sparta.spartaboard.global.error.exception.PostNotFoundException;
 import sparta.spartaboard.post.dto.request.PostCreateRequestDto;
 import sparta.spartaboard.post.dto.request.PostEditRequestDto;
 import sparta.spartaboard.post.dto.response.PostCreateResponseDto;
@@ -30,7 +32,7 @@ public class PostService {
 
 	public PostDetailResponseDto getPost(Long id) {
 		Post post = postRepository.findById(id)
-			.orElseThrow(() -> new IllegalArgumentException("없는 게시글"));
+			.orElseThrow(PostNotFoundException::new);
 
 		return new PostDetailResponseDto(post);
 	}
@@ -60,10 +62,10 @@ public class PostService {
 
 	private Post getValidatedPost(Long postId, String password) {
 		Post post = postRepository.findById(postId)
-			.orElseThrow(() -> new IllegalArgumentException("없는 게시글"));
+			.orElseThrow(PostNotFoundException::new);
 
 		if (!post.getPassword().equals(password)) {
-			throw new IllegalArgumentException("잘못된 비밀번호");
+			throw new InvalidPasswordException();
 		}
 
 		return post;

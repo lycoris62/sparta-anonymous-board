@@ -10,6 +10,7 @@ import lombok.Getter;
 public enum ErrorCode {
 
 	POST_NOT_FOUND(NOT_FOUND, "없는 게시글"),
+	INVALID_INPUT_LENGTH(BAD_REQUEST, "입력 길이 미충족"),
 	INVALID_PASSWORD(UNAUTHORIZED, "잘못된 비밀번호"),
 	SERVER_ERROR(INTERNAL_SERVER_ERROR, "서버 에러");
 

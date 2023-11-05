@@ -9,12 +9,13 @@ import lombok.RequiredArgsConstructor;
 import sparta.spartaboard.domain.post.dto.request.PostCreateRequestDto;
 import sparta.spartaboard.domain.post.dto.request.PostEditRequestDto;
 import sparta.spartaboard.domain.post.dto.response.PostCreateResponseDto;
+import sparta.spartaboard.domain.post.dto.response.PostDetailResponseDto;
+import sparta.spartaboard.domain.post.dto.response.PostPreviewResponseDto;
 import sparta.spartaboard.domain.post.entity.Post;
 import sparta.spartaboard.domain.post.repository.PostRepository;
 import sparta.spartaboard.global.error.exception.InvalidPasswordException;
 import sparta.spartaboard.global.error.exception.PostNotFoundException;
-import sparta.spartaboard.domain.post.dto.response.PostDetailResponseDto;
-import sparta.spartaboard.domain.post.dto.response.PostPreviewResponseDto;
+import sparta.spartaboard.global.security.PasswordEncoder;
 
 @Service
 @Transactional(readOnly = true)
@@ -22,6 +23,7 @@ import sparta.spartaboard.domain.post.dto.response.PostPreviewResponseDto;
 public class PostService {
 
 	private final PostRepository postRepository;
+	private final PasswordEncoder passwordEncoder;
 
 	public List<PostPreviewResponseDto> getPosts() {
 		return postRepository.findAllByOrderByCreatedAtDesc()
@@ -39,10 +41,17 @@ public class PostService {
 
 	@Transactional
 	public PostCreateResponseDto createPost(PostCreateRequestDto request) {
+		passwordEncoding(request);
+
 		Post createdPost = Post.create(request);
 		Post savedPost = postRepository.save(createdPost);
 
 		return new PostCreateResponseDto(savedPost.getId());
+	}
+
+	private void passwordEncoding(PostCreateRequestDto request) {
+		String encodedPassword = passwordEncoder.encode(request.getPassword());
+		request.changeEncodedPassword(encodedPassword);
 	}
 
 	@Transactional
@@ -64,10 +73,16 @@ public class PostService {
 		Post post = postRepository.findById(postId)
 			.orElseThrow(PostNotFoundException::new);
 
-		if (!post.getPassword().equals(password)) {
-			throw new InvalidPasswordException();
-		}
+		validatePassword(post, password);
 
 		return post;
+	}
+
+	private void validatePassword(Post post, String password) {
+		String encodedPassword = passwordEncoder.encode(password);
+
+		if (!post.getPassword().equals(encodedPassword)) {
+			throw new InvalidPasswordException();
+		}
 	}
 }

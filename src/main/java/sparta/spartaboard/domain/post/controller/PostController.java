@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import sparta.spartaboard.domain.post.dto.request.PostCreateRequestDto;
 import sparta.spartaboard.domain.post.dto.request.PostEditRequestDto;
@@ -43,7 +44,7 @@ public class PostController {
 	}
 
 	@PostMapping("/posts")
-	public ResponseEntity<PostCreateResponseDto> createPost(@RequestBody PostCreateRequestDto request) {
+	public ResponseEntity<PostCreateResponseDto> createPost(@Valid @RequestBody PostCreateRequestDto request) {
 		PostCreateResponseDto createPostDto = postService.createPost(request);
 
 		return ResponseEntity.ok(createPostDto);
@@ -52,7 +53,7 @@ public class PostController {
 	@PatchMapping("/posts/{postId}")
 	public ResponseEntity<PostDetailResponseDto> editPost(
 		@PathVariable Long postId,
-		@RequestBody PostEditRequestDto request,
+		@Valid @RequestBody PostEditRequestDto request,
 		@RequestHeader String password) {
 
 		PostDetailResponseDto editedPostDetail = postService.editPost(postId, request, password);

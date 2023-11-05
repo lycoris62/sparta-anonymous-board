@@ -1,4 +1,4 @@
-package sparta.spartaboard.post.service;
+package sparta.spartaboard.domain.post.service;
 
 import java.util.List;
 
@@ -6,15 +6,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
+import sparta.spartaboard.domain.post.dto.request.PostCreateRequestDto;
+import sparta.spartaboard.domain.post.dto.request.PostEditRequestDto;
+import sparta.spartaboard.domain.post.dto.response.PostCreateResponseDto;
+import sparta.spartaboard.domain.post.entity.Post;
+import sparta.spartaboard.domain.post.repository.PostRepository;
 import sparta.spartaboard.global.error.exception.InvalidPasswordException;
 import sparta.spartaboard.global.error.exception.PostNotFoundException;
-import sparta.spartaboard.post.dto.request.PostCreateRequestDto;
-import sparta.spartaboard.post.dto.request.PostEditRequestDto;
-import sparta.spartaboard.post.dto.response.PostCreateResponseDto;
-import sparta.spartaboard.post.dto.response.PostDetailResponseDto;
-import sparta.spartaboard.post.dto.response.PostPreviewResponseDto;
-import sparta.spartaboard.post.entity.Post;
-import sparta.spartaboard.post.repository.PostRepository;
+import sparta.spartaboard.domain.post.dto.response.PostDetailResponseDto;
+import sparta.spartaboard.domain.post.dto.response.PostPreviewResponseDto;
 
 @Service
 @Transactional(readOnly = true)

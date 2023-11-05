@@ -1,4 +1,4 @@
-package sparta.spartaboard.post.controller;
+package sparta.spartaboard.domain.post.controller;
 
 import java.util.List;
 
@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
-import sparta.spartaboard.post.dto.request.PostCreateRequestDto;
-import sparta.spartaboard.post.dto.request.PostEditRequestDto;
-import sparta.spartaboard.post.dto.response.PostCreateResponseDto;
-import sparta.spartaboard.post.dto.response.PostDetailResponseDto;
-import sparta.spartaboard.post.dto.response.PostPreviewResponseDto;
-import sparta.spartaboard.post.service.PostService;
+import sparta.spartaboard.domain.post.dto.request.PostCreateRequestDto;
+import sparta.spartaboard.domain.post.dto.request.PostEditRequestDto;
+import sparta.spartaboard.domain.post.dto.response.PostCreateResponseDto;
+import sparta.spartaboard.domain.post.dto.response.PostDetailResponseDto;
+import sparta.spartaboard.domain.post.dto.response.PostPreviewResponseDto;
+import sparta.spartaboard.domain.post.service.PostService;
 
 @RestController
 @RequiredArgsConstructor

@@ -1,4 +1,4 @@
-package sparta.spartaboard.post.entity;
+package sparta.spartaboard.domain.post.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,9 +9,9 @@ import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import sparta.spartaboard.model.BaseEntity;
-import sparta.spartaboard.post.dto.request.PostCreateRequestDto;
-import sparta.spartaboard.post.dto.request.PostEditRequestDto;
+import sparta.spartaboard.domain.model.BaseEntity;
+import sparta.spartaboard.domain.post.dto.request.PostCreateRequestDto;
+import sparta.spartaboard.domain.post.dto.request.PostEditRequestDto;
 
 /**
  * 게시글 엔티티.

@@ -1,4 +1,4 @@
-package sparta.spartaboard.model;
+package sparta.spartaboard.domain.model;
 
 import java.time.LocalDateTime;
 

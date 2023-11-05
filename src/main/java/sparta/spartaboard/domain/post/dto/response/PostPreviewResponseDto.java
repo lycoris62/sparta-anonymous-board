@@ -1,9 +1,9 @@
-package sparta.spartaboard.post.dto.response;
+package sparta.spartaboard.domain.post.dto.response;
 
 import java.time.LocalDateTime;
 
 import lombok.Getter;
-import sparta.spartaboard.post.entity.Post;
+import sparta.spartaboard.domain.post.entity.Post;
 
 @Getter
 public class PostPreviewResponseDto {

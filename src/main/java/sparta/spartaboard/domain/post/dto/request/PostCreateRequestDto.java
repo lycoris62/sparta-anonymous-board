@@ -1,4 +1,4 @@
-package sparta.spartaboard.post.dto.request;
+package sparta.spartaboard.domain.post.dto.request;
 
 import lombok.Getter;
 

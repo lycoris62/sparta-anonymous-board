@@ -14,4 +14,8 @@
 <img width="454" alt="스크린샷 2023-11-05 오후 5 43 25" src="https://github.com/lycoris62/sparta-anonymous-board/assets/55584664/7f0eb9a5-118d-4b59-8d02-3188881780dd">
 
 ## ERD
+[ERD CLOUD 링크](https://www.erdcloud.com/d/SXMnq2BfAkKfycpKq)    
+
+<br />
+
 ![SpartaBoard](https://github.com/lycoris62/sparta-anonymous-board/assets/55584664/3570f26e-68fd-413e-8068-58b38b38a282)

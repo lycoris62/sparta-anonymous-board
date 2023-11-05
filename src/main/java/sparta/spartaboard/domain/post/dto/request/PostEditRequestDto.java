@@ -5,6 +5,9 @@ import org.hibernate.validator.constraints.Length;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 
+/**
+ * 게시글 수정 요청 DTO
+ */
 @Getter
 public class PostEditRequestDto {
 

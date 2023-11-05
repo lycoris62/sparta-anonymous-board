@@ -18,7 +18,7 @@ import sparta.spartaboard.domain.post.dto.request.PostEditRequestDto;
  */
 @Getter
 @Entity
-@Table(name = "post")
+@Table(name = "post") // 테이블명을 명시적으로 알림
 @NoArgsConstructor(access = AccessLevel.PROTECTED) // JPA는 기본 생성자를 필요하므로 최소의 접근제어자로 생성
 public class Post extends BaseEntity {
 
@@ -38,18 +38,18 @@ public class Post extends BaseEntity {
 	@Column(nullable = false, columnDefinition = "text") // 글내용은 1이상 65,535 byte 이하
 	private String contents;
 
-	private Post(String title, String author, String password, String contents) {
+	private Post(String title, String author, String password, String contents) { // private 로 선언
 		this.title = title;
 		this.author = author;
 		this.password = password;
 		this.contents = contents;
 	}
 
-	public static Post create(PostCreateRequestDto request) {
+	public static Post create(PostCreateRequestDto request) { // 특정 DTO로 생성을 제한함
 		return new Post(request.getTitle(), request.getAuthor(), request.getPassword(), request.getContents());
 	}
 
-	public void edit(PostEditRequestDto request) {
+	public void edit(PostEditRequestDto request) { // 특정 DTO로 수정을 제한함
 		this.title = request.getTitle();
 		this.author = request.getAuthor();
 		this.contents = request.getContents();

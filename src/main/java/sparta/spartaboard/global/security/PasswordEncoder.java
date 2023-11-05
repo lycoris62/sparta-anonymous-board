@@ -7,6 +7,10 @@ import java.security.NoSuchAlgorithmException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+/**
+ * 비밀번호 암호화 객체.
+ * 환경변수로부터 salt 를 받아와 SHA-512로 암호화
+ */
 @Component
 public class PasswordEncoder {
 

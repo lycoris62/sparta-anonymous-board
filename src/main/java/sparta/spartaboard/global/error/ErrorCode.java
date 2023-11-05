@@ -6,6 +6,10 @@ import org.springframework.http.HttpStatus;
 
 import lombok.Getter;
 
+/**
+ * 에러코드를 enum 으로 모아서 어떤 에러가 있는지 한눈에 파악하기 쉽게 함
+ * 특정 에러가 발생하면 해당하는 Http Status 와 message 가 리턴됨
+ */
 @Getter
 public enum ErrorCode {
 

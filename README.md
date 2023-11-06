@@ -12,7 +12,7 @@
 │           ├── domain                                                    // 도메인 별로 디렉토리를 구분 
 │           │   ├── model                                                 // 모든 도메인에 쓰이는 엔티티 집합 
 │           │   │   └── BaseEntity.java
-│           │   └── post
+│           │   └── post                                                  // 게시글 도메인 디렉토리 
 │           │       ├── controller
 │           │       │   └── PostController.java
 │           │       ├── dto

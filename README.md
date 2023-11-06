@@ -47,7 +47,7 @@
 ```
 
 ## 유스케이스 다이어그램 
-![스파르타_익명_게시판](https://github.com/lycoris62/sparta-anonymous-board/assets/55584664/897dbb47-8012-4014-8adc-edbea3f030d8)
+![스파르타_익명_게시판](https://github.com/lycoris62/sparta-anonymous-board/assets/55584664/82898cd6-3dcb-4f77-a803-8009f8ff5804)
 
 ## API 명세서
 [POSTMAN 명세서](https://documenter.getpostman.com/view/16720681/2s9YXfa2v8)    

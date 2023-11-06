@@ -61,4 +61,6 @@
 
 <br />
 
-![SpartaBoard](https://github.com/lycoris62/sparta-anonymous-board/assets/55584664/3570f26e-68fd-413e-8068-58b38b38a282)
+![SpartaBoard](https://github.com/lycoris62/sparta-anonymous-board/assets/55584664/ce5d6b1d-0cdd-4aaf-bf3f-e8637a6a4ac4)
+
+

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
+import sparta.spartaboard.domain.post.dto.mapper.PostMapper;
 import sparta.spartaboard.domain.post.dto.request.PostCreateRequestDto;
 import sparta.spartaboard.domain.post.dto.request.PostEditRequestDto;
 import sparta.spartaboard.domain.post.dto.response.PostCreateResponseDto;
@@ -22,6 +23,7 @@ import sparta.spartaboard.global.security.PasswordEncoder;
 @RequiredArgsConstructor
 public class PostService {
 
+	private final PostMapper postMapper;
 	private final PostRepository postRepository;
 	private final PasswordEncoder passwordEncoder;
 
@@ -31,7 +33,7 @@ public class PostService {
 	public List<PostPreviewResponseDto> getPosts() {
 		return postRepository.findAllByOrderByCreatedAtDesc()
 			.stream()
-			.map(PostPreviewResponseDto::new)
+			.map(postMapper::toPostPreviewResponseDto)
 			.toList();
 	}
 
@@ -43,7 +45,7 @@ public class PostService {
 		Post post = postRepository.findById(id)
 			.orElseThrow(PostNotFoundException::new);
 
-		return new PostDetailResponseDto(post);
+		return postMapper.toPostDetailResponseDto(post);
 	}
 
 	/**
@@ -72,7 +74,7 @@ public class PostService {
 		Post post = getValidatedPost(postId, password);
 		post.edit(request); // Post 엔티티의 자체 수정 메서드를 이용해서 수정
 
-		return new PostDetailResponseDto(post);
+		return postMapper.toPostDetailResponseDto(post);
 	}
 
 	/**
